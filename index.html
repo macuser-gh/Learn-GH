@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brenda's Bakes | Cambridge Bakery</title>
+  <style>
+    :root {
+      --pastel-pink: #f7c9d8;
+      --warm-brown: #7c4a2d;
+      --cream: #fff7f2;
+      --dark-brown: #4a2f1b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--dark-brown);
+      background: linear-gradient(180deg, #fff, var(--cream));
+    }
+
+    header {
+      background-color: var(--pastel-pink);
+      color: var(--dark-brown);
+      padding: 2.5rem 1rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(124, 74, 45, 0.18);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    nav {
+      margin-top: 1rem;
+    }
+
+    nav a {
+      margin: 0 0.8rem;
+      text-decoration: none;
+      color: var(--dark-brown);
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--warm-brown);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      align-items: center;
+      padding: 3rem 10vw;
+      gap: 2rem;
+    }
+
+    .hero img {
+      width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(124, 74, 45, 0.25);
+      object-fit: cover;
+    }
+
+    .hero h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: var(--warm-brown);
+    }
+
+    .hero p {
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+
+    .order-button {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.85rem 2.5rem;
+      background-color: var(--pastel-pink);
+      color: var(--dark-brown);
+      border: 2px solid var(--warm-brown);
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .order-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 18px rgba(124, 74, 45, 0.2);
+    }
+
+    section {
+      padding: 3rem 10vw;
+    }
+
+    section:nth-of-type(even) {
+      background-color: rgba(247, 201, 216, 0.1);
+    }
+
+    h3 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: var(--warm-brown);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      margin: 0 0 1rem;
+      line-height: 1.7;
+    }
+
+    .reviews {
+      background-color: #ffeef6;
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(124, 74, 45, 0.15);
+      box-shadow: 0 12px 24px rgba(124, 74, 45, 0.12);
+    }
+
+    .reviews h4 {
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .menu-card {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 6px 18px rgba(124, 74, 45, 0.12);
+      border: 1px solid rgba(124, 74, 45, 0.1);
+    }
+
+    .menu-card h4 {
+      margin-top: 0;
+      color: var(--warm-brown);
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      margin: 0.65rem 0;
+      font-weight: 500;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 16px;
+      height: 220px;
+      object-fit: cover;
+      box-shadow: 0 8px 20px rgba(124, 74, 45, 0.18);
+    }
+
+    form {
+      max-width: 520px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 24px rgba(124, 74, 45, 0.15);
+      border: 1px solid rgba(124, 74, 45, 0.12);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      border: 1px solid rgba(124, 74, 45, 0.25);
+      font-size: 1rem;
+      background-color: rgba(247, 201, 216, 0.15);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--warm-brown);
+      box-shadow: 0 0 0 4px rgba(124, 74, 45, 0.15);
+    }
+
+    button {
+      background-color: var(--warm-brown);
+      color: #fff;
+      padding: 0.85rem 2rem;
+      border: none;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(124, 74, 45, 0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #f8d8e4;
+      color: var(--dark-brown);
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .hero {
+        padding: 2.5rem 8vw;
+      }
+
+      section {
+        padding: 2.5rem 8vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Brenda's Bakes</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <h2>Baked with Love in the Heart of Cambridge</h2>
+        <p>Welcome to Brenda's Bakes, Cambridge's go-to bakery for comforting classics and show-stopping sweets. Every treat is handcrafted with the freshest ingredients, perfected recipes, and a generous sprinkle of love.</p>
+        <a class="order-button" href="#contact">Order Now</a>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1541976076758-347942db197f?auto=format&fit=crop&w=900&q=80" alt="Frosted celebration cake on a cake stand">
+      </div>
+    </section>
+
+    <section id="about">
+      <h3>About Us</h3>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>For over 20 years, Brenda has been filling Cambridge kitchens with the warm aroma of freshly baked breads, delicate pastries, and towering celebration cakes. Her passion began in her grandmother's kitchen and has grown into a beloved local bakery known for attentive service and irresistible flavors.</p>
+          <p>From intimate birthday gatherings to elegant weddings, Brenda crafts every order with care, creativity, and a personal touch that keeps guests coming back for more.</p>
+        </div>
+        <div class="reviews">
+          <h4>What Our Guests Are Saying</h4>
+          <p>"Best bakery in Cambridge! Brenda's cakes are as beautiful as they are delicious." – ★★★★★ on Google</p>
+          <p>"Friendly service, gorgeous cupcakes, and the sourdough is unbeatable." – ★★★★★ on Google</p>
+          <p>"Brenda made our wedding cake dreams come true." – ★★★★★ on Google</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <h3>Our Menu</h3>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <h4>Celebration Cakes</h4>
+          <div class="menu-item"><span>Signature Victoria Sponge</span><span>£55</span></div>
+          <div class="menu-item"><span>Chocolate Truffle Tower</span><span>£68</span></div>
+          <div class="menu-item"><span>Lemon Elderflower Tier</span><span>£72</span></div>
+          <div class="menu-item"><span>Raspberry Velvet Cake</span><span>£60</span></div>
+        </div>
+        <div class="menu-card">
+          <h4>Cupcakes</h4>
+          <div class="menu-item"><span>Cambridge Cream Cupcake</span><span>£3.50</span></div>
+          <div class="menu-item"><span>Salted Caramel Swirl</span><span>£3.25</span></div>
+          <div class="menu-item"><span>Rose &amp; Pistachio Bliss</span><span>£3.75</span></div>
+          <div class="menu-item"><span>Chocolate Fudge Dream</span><span>£3.25</span></div>
+        </div>
+        <div class="menu-card">
+          <h4>Artisan Bread</h4>
+          <div class="menu-item"><span>Classic Sourdough Loaf</span><span>£4.50</span></div>
+          <div class="menu-item"><span>Rosemary Sea Salt Focaccia</span><span>£4.95</span></div>
+          <div class="menu-item"><span>Seeded Multigrain Boule</span><span>£4.75</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <h3>Gallery</h3>
+      <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1505253758473-96b7015fcd40?auto=format&fit=crop&w=800&q=80" alt="Layered cake with berries">
+        <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?auto=format&fit=crop&w=800&q=80" alt="Cupcakes with pink frosting">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Artisan bread loaf">
+        <img src="https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?auto=format&fit=crop&w=800&q=80" alt="Wedding cake with flowers">
+      </div>
+    </section>
+
+    <section id="contact">
+      <h3>Contact &amp; Custom Orders</h3>
+      <form>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Tell us about your dream bake" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+      <div style="text-align: center; margin-top: 2rem;">
+        <p><strong>Call:</strong> 01223 555 123</p>
+        <p><strong>Visit:</strong> 24 Mill Road, Cambridge CB1 2BQ</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Brenda's Bakes. Freshly made in Cambridge.</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
